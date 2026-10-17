@@ -1,0 +1,60 @@
+id: shop-nobi
+name: Shop Nobi
+description: Read-only product search across independent online stores, with links to buy on merchant
+  websites. Also finds matching Shop Nobi buying pages. Connect to the public Streamable HTTP endpoint
+  with no account or API key. Nobi may earn a commission from qualifying merchant links; clients should
+  display the supplied link label. The linked repository contains the official Claude Code plugin and
+  remote connection configuration, rather than the hosted server implementation.
+author:
+  name: Nobi
+  github: Locusive
+repository: https://github.com/Locusive/shop-nobi-claude-plugin
+transport:
+- http-streaming
+category: Research
+tags:
+- shopping
+- product-search
+- independent-stores
+- read-only
+- remote-mcp
+created_at: '2026-10-17T14:13:08.314Z'
+updated_at: '2026-10-17T14:13:08.314Z'
+tools:
+- name: search_products
+  description: Search product catalogs across independent online stores using a natural-language query.
+    Returns product details and links to buy from the merchant. Show any supplied commission link label
+    beside its link.
+  input_schema:
+    type: object
+    properties:
+      query:
+        type: string
+        description: What the user is looking for, in plain words, with the details that matter to them,
+          such as "waterproof hiking boots" or "linen dress for a summer wedding under $150".
+        minLength: 1
+        maxLength: 500
+      limit:
+        type: integer
+        description: How many products to return, from 1 to 20. The default is 10.
+        minimum: 1
+        maximum: 20
+        default: 10
+    required:
+    - query
+- name: find_shop_nobi_page
+  description: Find an existing Shop Nobi buying page for an exact product topic. Returns matching page
+    metadata and a link, or reports that no matching page exists; this is not product search.
+  input_schema:
+    type: object
+    properties:
+      topic:
+        type: string
+        description: The product topic, in a few plain words, such as "leather boots".
+        minLength: 1
+        maxLength: 200
+    required:
+    - topic
+install:
+  url: https://api.nobi.ai/v1/shop/mcp
+env_vars: []
