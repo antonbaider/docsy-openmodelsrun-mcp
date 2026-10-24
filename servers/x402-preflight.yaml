@@ -8,10 +8,13 @@ description: >
   caller-authorized x402 payment. The published mcp-remote install supports
   discovery and the free inspection tool only; paid calls require a direct
   x402-compatible client that can approve, sign, and retry the payment.
+  The service is hosted and its implementation is closed-source; the public
+  repository linked below contains the documentation, discovery files, and the
+  published MCP/OpenAPI surface, not the server code.
 author:
   name: Chiko
   github: chico10117
-repository: https://github.com/chico10117/basepay-readiness-service
+repository: https://github.com/chico10117/x402-preflight-docs
 transport:
   - http-streaming
 category: Security
@@ -24,7 +27,7 @@ tags:
   - mcp
   - endpoint-audit
 created_at: "2026-09-01T00:49:03.753557Z"
-updated_at: "2026-09-04T20:13:48Z"
+updated_at: "2026-10-24T17:55:00Z"
 tools:
   - name: inspect_x402_endpoint
     description: >
@@ -133,6 +136,7 @@ tools:
           maxLength: 20
           default: en
 install:
+  url: https://x402.chikocorp.com/mcp
   command: npx
   args:
     - "-y"
